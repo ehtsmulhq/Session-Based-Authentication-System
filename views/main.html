@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Main Page</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="container">
+  <h2 id="welcome"></h2>
+  <button onclick="goToProfile()">Go to Profile</button>
+</div>
+
+<script>
+fetch('/userinfo')
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('welcome').innerText = `Welcome, ${data.username}`;
+  });
+
+function goToProfile() {
+  window.location.href = '/profile';
+}
+</script>
+</body>
+</html>
